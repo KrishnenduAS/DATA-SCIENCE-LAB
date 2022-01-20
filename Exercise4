@@ -1,0 +1,532 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "26707cba",
+   "metadata": {},
+   "source": [
+    "1.Write a python program to implement List-to-Series Conversion."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "e5a617aa",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter numbers1 4 6 7 9\n",
+      "0    1\n",
+      "1    4\n",
+      "2    6\n",
+      "3    7\n",
+      "4    9\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "a =[int(i) for i in input(\"Enter numbers\").split()]\n",
+    "\n",
+    "series1 = pd.Series(a)\n",
+    "\n",
+    "print(series1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f6e21d05",
+   "metadata": {},
+   "source": [
+    "2.Write  a  python  program  to Generate  the  series  of  dates  from  1st  May,  2021  to  12th May, 2021 (both inclusive)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "9e40f094",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2021-05-01 00:00:00\n",
+      "2021-05-02 00:00:00\n",
+      "2021-05-03 00:00:00\n",
+      "2021-05-04 00:00:00\n",
+      "2021-05-05 00:00:00\n",
+      "2021-05-06 00:00:00\n",
+      "2021-05-07 00:00:00\n",
+      "2021-05-08 00:00:00\n",
+      "2021-05-09 00:00:00\n",
+      "2021-05-10 00:00:00\n",
+      "2021-05-11 00:00:00\n",
+      "2021-05-12 00:00:00\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "dates=pd.date_range(start='05-01-2021',end='05-12-2021')\n",
+    "for i in dates:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7502a1ef",
+   "metadata": {},
+   "source": [
+    "3.Given a dictionary, convert it into corresponding dataframe and display it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "61fa345d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter the keysabhi adee anju anu\n",
+      "Enter the values67 56 89 90\n",
+      "\n",
+      "The Dataframe is\n",
+      "    name marks\n",
+      "0  abhi    67\n",
+      "1  adee    56\n",
+      "2  anju    89\n",
+      "3   anu    90\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "keys=input(\"Enter the keys\").split()\n",
+    "values=input(\"Enter the values\").split()\n",
+    "dict1={\"name\" : keys, \"marks\" : values}\n",
+    "df=pd.DataFrame.from_dict(dict1)\n",
+    "print(\"\\nThe Dataframe is\\n\\n\",df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e819f86",
+   "metadata": {},
+   "source": [
+    "4.Given a 2D List, convert it into corresponding dataframe and display it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "de83e615",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter number of rows3\n",
+      "Enter elements row-wise\n",
+      "\"Anu\" 89\n",
+      "\"Anju\" 78\n",
+      "\"Adee\" 56\n",
+      "     Name Marks\n",
+      "0   \"Anu\"    89\n",
+      "1  \"Anju\"    78\n",
+      "2  \"Adee\"    56\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "m=int(input(\"Enter number of rows\"))\n",
+    "print(\"Enter elements row-wise\")\n",
+    "matrix=[]\n",
+    "for i in range(m):\n",
+    "    a=input().split()\n",
+    "    matrix.append(a)\n",
+    "df=pd.DataFrame(matrix,columns=[\"Name\",\"Marks\"]) \n",
+    "print(\"\\nThe Dataframe is\\n\\n\",df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "19835c52",
+   "metadata": {},
+   "source": [
+    "5.Given a CSV file, read it into a dataframe and display it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "bacbc79e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Dataframe is\n",
+      "    Name  Marks Subject\n",
+      "0  abhi     45      CS\n",
+      "1   anu     89      DS\n",
+      "2  ashi     90      DL\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file2.csv\")\n",
+    "print(\"The Dataframe is\\n\",df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a05afe56",
+   "metadata": {},
+   "source": [
+    "6.Given a dataframe, sort it by multiple columns."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "f7f6a45c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Dataframe is\n",
+      "     Name  Marks Subject\n",
+      "0   ashi     59      ML\n",
+      "1  ardra     49      DS\n",
+      "2   abhi     70      DL\n",
+      "The Dataframe sorted by Name is\n",
+      "     Name  Marks Subject\n",
+      "2   abhi     70      DL\n",
+      "1  ardra     49      DS\n",
+      "0   ashi     59      ML\n",
+      "The Dataframe sorted by Marks is\n",
+      "     Name  Marks Subject\n",
+      "1  ardra     49      DS\n",
+      "0   ashi     59      ML\n",
+      "2   abhi     70      DL\n",
+      "The Dataframe sorted by Subject is\n",
+      "     Name  Marks Subject\n",
+      "2   abhi     70      DL\n",
+      "1  ardra     49      DS\n",
+      "0   ashi     59      ML\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file2.csv\")\n",
+    "print(\"The Dataframe is\\n\",df)\n",
+    "print(\"The Dataframe sorted by Name is\\n\",df.sort_values(by=\"Name\"))\n",
+    "print(\"The Dataframe sorted by Marks is\\n\",df.sort_values(by=\"Marks\"))\n",
+    "print(\"The Dataframe sorted by Subject is\\n\",df.sort_values(by=\"Subject\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "383eb9c2",
+   "metadata": {},
+   "source": [
+    "7.Given  a dataframe  with  custom  indexing,  convert  it  to  default  indexing  and display it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7dfe5fd3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The custom-indexed Dataframe is\n",
+      "        Marks Subject\n",
+      "Name                \n",
+      "ashi      59      ML\n",
+      "ardra     49      DS\n",
+      "abhi      70      DL\n",
+      "The default-indexed Dataframe is\n",
+      "     Name  Marks Subject\n",
+      "0   ashi     59      ML\n",
+      "1  ardra     49      DS\n",
+      "2   abhi     70      DL\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file2.csv\")\n",
+    "df=df.set_index(\"Name\")\n",
+    "print(\"The custom-indexed Dataframe is\\n\",df)\n",
+    "df=df.reset_index()\n",
+    "print(\"The default-indexed Dataframe is\\n\",df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e47bdabb",
+   "metadata": {},
+   "source": [
+    "8.Given a dataframe, select first 2 rows and output them."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "e2027d28",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "First 2 rows of the DataFrame\n",
+      "     Name  Marks Subject\n",
+      "0   ashi     59      ML\n",
+      "1  ardra     49      DS\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file2.csv\")\n",
+    "print(\"First 2 rows of the DataFrame\\n\",df.head(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "97382f6a",
+   "metadata": {},
+   "source": [
+    "9.Given  is  a  dataframe  showing  name,  occupation,  salary  of  people.  Find  the  average salary per occupation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "31bb1edc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame\n",
+      "         Name Occupation  Salary\n",
+      "0       Abhi   Engineer    5000\n",
+      "1      Bipin     Doctor    8000\n",
+      "2      Rahul   Mechanic    3000\n",
+      "3       Abhi   Mechanic    4000\n",
+      "4      Rejin   Mechanic    7000\n",
+      "5    Anupama   Engineer    7000\n",
+      "6  Arundathi   Engineer    6000\n",
+      "7       Arun   Engineer    5000\n",
+      "8       Abhi   Engineer    4000\n",
+      "9       Balu     Doctor    6000\n",
+      "Occupation\n",
+      "Doctor      7000.000000\n",
+      "Engineer    5400.000000\n",
+      "Mechanic    4666.666667\n",
+      "Name: Salary, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file3.csv\")\n",
+    "print(\"DataFrame\\n\",df)\n",
+    "averSal=df.groupby(\"Occupation\")[\"Salary\"].mean()\n",
+    "print(averSal)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21e6843b",
+   "metadata": {},
+   "source": [
+    "10.Given a dataframe with NaN Values, fill the NaN values with 0."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "2b79c679",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame\n",
+      "         Name Occupation  Salary\n",
+      "0       Abhi   Engineer     NaN\n",
+      "1      Bipin     Doctor  8000.0\n",
+      "2      Rahul   Mechanic     NaN\n",
+      "3       Abhi   Mechanic  4000.0\n",
+      "4      Rejin   Mechanic  7000.0\n",
+      "5    Anupama   Engineer     NaN\n",
+      "6  Arundathi   Engineer  6000.0\n",
+      "7       Arun   Engineer  5000.0\n",
+      "8       Abhi   Engineer     NaN\n",
+      "9       Balu     Doctor  6000.0\n",
+      "DataFrame\n",
+      "         Name Occupation  Salary\n",
+      "0       Abhi   Engineer     0.0\n",
+      "1      Bipin     Doctor  8000.0\n",
+      "2      Rahul   Mechanic     0.0\n",
+      "3       Abhi   Mechanic  4000.0\n",
+      "4      Rejin   Mechanic  7000.0\n",
+      "5    Anupama   Engineer     0.0\n",
+      "6  Arundathi   Engineer  6000.0\n",
+      "7       Arun   Engineer  5000.0\n",
+      "8       Abhi   Engineer     0.0\n",
+      "9       Balu     Doctor  6000.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file4.csv\")\n",
+    "print(\"DataFrame\\n\",df)\n",
+    "print(\"DataFrame\\n\",df.fillna(0))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9a9ce7b9",
+   "metadata": {},
+   "source": [
+    "11.Given  is  a  dataframe  showing  Company  Names  (cname)  and  corresponding  Profits (profit).  Convert the  values  of  Profit  column  such that  values  in  it  greater than  0  are set to True and the rest are set to False."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "172caab5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame\n",
+      "   cname  profit\n",
+      "0   ABC      15\n",
+      "1   ACD      -6\n",
+      "2   XYZ       9\n",
+      "3   RPM      -5\n",
+      "4   GHK       9\n",
+      "New DataFrame\n",
+      "   cname profit\n",
+      "0   ABC   True\n",
+      "1   ACD  False\n",
+      "2   XYZ   True\n",
+      "3   RPM  False\n",
+      "4   GHK   True\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv(\"file5.csv\")\n",
+    "print(\"DataFrame\\n\",df)\n",
+    "df.loc[df[\"profit\"] > 0, \"profit\"] = True\n",
+    "df.loc[df[\"profit\"] <= 0, \"profit\"] = False\n",
+    "print(\"New DataFrame\\n\",df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "68d49467",
+   "metadata": {},
+   "source": [
+    "12.Given are 2 dataframes, with one dataframe containing Employee ID (eid), Employee Name (ename) and Stipend (stipend) and the other dataframe containing Employee ID (eid) and designation of the employee (designation). Output the Dataframe containing Employee   ID   (eid),   Employee   Name   (ename),   Stipend   (stipend)   and   Position (position)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "cb56a64e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame1\n",
+      "    eid   ename  stipend\n",
+      "0    1    Rani     2500\n",
+      "1    2     Anu     1500\n",
+      "2    3  Raghav     3000\n",
+      "3    4  Akshit     2600\n",
+      "4    5     Ram     1800\n",
+      "DataFrame2\n",
+      "    eid designation\n",
+      "0    4     Manager\n",
+      "1    1       Clerk\n",
+      "2    3       Clerk\n",
+      "3    2     Manager\n",
+      "4    5  Accountant\n",
+      "Merged Dataframe\n",
+      "    eid   ename  stipend designation\n",
+      "0    1    Rani     2500       Clerk\n",
+      "1    2     Anu     1500     Manager\n",
+      "2    3  Raghav     3000       Clerk\n",
+      "3    4  Akshit     2600     Manager\n",
+      "4    5     Ram     1800  Accountant\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df1=pd.read_csv(\"one.csv\")\n",
+    "print(\"DataFrame1\\n\",df1)\n",
+    "df2=pd.read_csv(\"two.csv\")\n",
+    "print(\"DataFrame2\\n\",df2)\n",
+    "result=pd.merge(df1,df2,on=\"eid\")\n",
+    "print(\"Merged Dataframe\\n\",result)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
